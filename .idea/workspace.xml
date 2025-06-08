@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="543dec34-a090-498d-8f13-9758efecddf6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/field.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/board/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/consumers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/management/commands/setup_scylladb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/middleware.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/migrations/0002_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/permissions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/routing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/services/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/services/redis_service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/signals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/static/chat/test_chat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/chat/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/create_django_app.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/galileo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/galileo/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/galileo/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/galileo/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/galileo/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/attachments/Black_Sabbath_Poster_2013-2014_By_Samuel_Ho.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/attachments/DreamShaper_v5_crypto_currncy_background_0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/attachments/_59fc0094-5f08-4c60-9783-85563234ad13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/media/todo/28d445c9-1986-4c7f-b619-1cdec507f50f.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/profile/4aa8298d-28ad-4f13-8e53-07048ada98f5.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/profile/Black_Sabbath_Poster_2013-2014_By_Samuel_Ho.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/profile/Black_Sabbath_Poster_2013-2014_By_Samuel_Ho_1Rrdd1R.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/media/space_images/batman_wallpaper.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/notes/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/outh/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/permissions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/space_jwt_middleware.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/post/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/authentication.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/permissions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/signals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/space/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/teams/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/migrations/0002_rename_priority_task_priority_remove_task_user_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/todo/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/galileo/workspace/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/description.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/invite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/massage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/platforms.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/post.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/post1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/snipt/signup.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/update.sh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2yFGMCEaLmCvIITR0HXvNa2JH0Y" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-4f4e415b4190-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.26053.29" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="543dec34-a090-498d-8f13-9758efecddf6" name="Changes" comment="" />
+      <created>1749422859189</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749422859189</updated>
+    </task>
+    <servers />
+  </component>
+</project>

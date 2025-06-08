@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Chat Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #container { max-width: 800px; margin: 0 auto; }
+        #status { padding: 5px 10px; margin-bottom: 10px; border-radius: 4px; background-color: #f0f0f0; }
+        #messages { height: 400px; border: 1px solid #ccc; overflow-y: auto; padding: 10px; margin-bottom: 10px; list-style-type: none; }
+        #controls { margin-bottom: 15px; }
+        #messageInput { width: 70%; padding: 8px; margin-right: 5px; }
+        .btn { padding: 8px 12px; margin-right: 5px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background: #3e8e41; }
+        .error { color: red; font-weight: bold; }
+        .metadata { color: #999; font-size: 0.8em; margin-left: 5px; }
+        .message-item { margin-bottom: 8px; padding: 5px; border-bottom: 1px solid #eee; }
+        .system-message { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Chat Test</h1>
+        <div id="status">Initializing...</div>
+
+        <div id="setup" style="margin-bottom: 20px; display: none;">
+            <h3>Connection Setup</h3>
+            <div>
+                <label for="spaceIdInput">Space ID:</label>
+                <input id="spaceIdInput" type="text" style="width: 300px; margin-bottom: 5px;">
+            </div>
+            <div>
+                <label for="roomIdInput">Room ID:</label>
+                <input id="roomIdInput" type="text" style="width: 300px; margin-bottom: 5px;">
+            </div>
+            <div>
+                <label for="tokenInput">JWT Token:</label>
+                <input id="tokenInput" type="text" style="width: 300px; margin-bottom: 5px;">
+            </div>
+            <button onclick="setupConnection()" class="btn">Connect</button>
+        </div>
+
+        <div id="chat" style="display: none;">
+            <div id="controls">
+                <input id="messageInput" type="text" placeholder="Type a message">
+                <button onclick="sendMessage()" class="btn">Send</button>
+                <button onclick="sendTyping()" class="btn">Typing</button>
+                <button onclick="stopTyping()" class="btn">Stop Typing</button>
+                <button onclick="disconnect()" class="btn" style="background: #f44336;">Disconnect</button>
+            </div>
+            <ul id="messages"></ul>
+        </div>
+    </div>
+
+    <script>
+        let ws = null;
+        let spaceId, chatRoomId, token;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to get parameters from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            spaceId = urlParams.get('space_id');
+            chatRoomId = urlParams.get('room_id');
+
+            // Check if we need to fetch a token
+            if (spaceId && chatRoomId) {
+                document.getElementById('spaceIdInput').value = spaceId;
+                document.getElementById('roomIdInput').value = chatRoomId;
+
+                // Try to get JWT token from cookies or localStorage
+                token = localStorage.getItem('chat_jwt_token');
+
+                if (token) {
+                    document.getElementById('tokenInput').value = token;
+                    document.getElementById('status').innerText = 'Found saved credentials. Ready to connect.';
+                } else {
+                    // Try to fetch JWT token automatically
+                    fetchJwtToken();
+                }
+            }
+
+            // Show setup UI
+            document.getElementById('setup').style.display = 'block';
+        });
+
+        // Attempt to fetch JWT token
+        function fetchJwtToken() {
+            document.getElementById('status').innerText = 'Attempting to fetch JWT token...';
+
+            fetch('/api/token/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Token request failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                token = data.access;
+                document.getElementById('tokenInput').value = token;
+                localStorage.setItem('chat_jwt_token', token);
+                document.getElementById('status').innerText = 'Successfully retrieved JWT token. Ready to connect.';
+            })
+            .catch(error => {
+                console.error('Error fetching JWT token:', error);
+                document.getElementById('status').innerText = 'Could not automatically get JWT token. Please enter it manually.';
+            });
+        }
+
+        // Get CSRF token from cookies
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Setup the WebSocket connection
+        function setupConnection() {
+            // Get values from inputs
+            spaceId = document.getElementById('spaceIdInput').value.trim();
+            chatRoomId = document.getElementById('roomIdInput').value.trim();
+            token = document.getElementById('tokenInput').value.trim();
+
+            if (!spaceId || !chatRoomId || !token) {
+                document.getElementById('status').innerHTML = '<span class="error">Please provide all required fields</span>';
+                return;
+            }
+
+            // Save token for future use
+            localStorage.setItem('chat_jwt_token', token);
+
+            // Update URL with parameters without page reload
+            const url = new URL(window.location);
+            url.searchParams.set('space_id', spaceId);
+            url.searchParams.set('room_id', chatRoomId);
+            window.history.pushState({}, '', url);
+
+            // Connect to WebSocket
+            connectWebSocket();
+        }
+
+        function connectWebSocket() {
+            document.getElementById('status').innerText = 'Connecting...';
+
+            // Close existing connection if any
+            if (ws) {
+                ws.close();
+            }
+
+            // Create new WebSocket connection
+            ws = new WebSocket(`ws://${window.location.host}/ws/chat/${spaceId}/${chatRoomId}/?token=${token}`);
+
+            ws.onopen = () => {
+                console.log("Connected to WebSocket");
+                document.getElementById('status').innerText = 'Connected!';
+                document.getElementById('setup').style.display = 'none';
+                document.getElementById('chat').style.display = 'block';
+                addSystemMessage("Connected to chat room");
+            };
+
+            ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                console.log("Received:", data);
+
+                if (data.error) {
+                    addErrorMessage(data.error);
+                } else if (data.type === "message") {
+                    addChatMessage(data.message);
+                } else if (data.type === "initial_data") {
+                    document.getElementById('messages').innerHTML = ''; // Clear previous messages
+                    if (data.recent_messages && data.recent_messages.length > 0) {
+                        data.recent_messages.forEach(msg => {
+                            addChatMessage(msg);
+                        });
+                        addSystemMessage(`Loaded ${data.recent_messages.length} recent messages`);
+                    } else {
+                        addSystemMessage("No recent messages");
+                    }
+                } else if (data.type === "typing") {
+                    addSystemMessage(`${data.user_info.display_name} is ${data.is_typing ? "typing" : "not typing"}`);
+                } else if (data.type === "user_joined") {
+                    addSystemMessage(`${data.user_info.display_name} joined the chat`);
+                } else if (data.type === "user_left") {
+                    addSystemMessage(`${data.user_info.display_name} left the chat`);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.error("WebSocket error:", error);
+                document.getElementById('status').innerHTML = '<span class="error">Connection error</span>';
+                document.getElementById('setup').style.display = 'block';
+            };
+
+            ws.onclose = () => {
+                console.log("WebSocket closed");
+                document.getElementById('status').innerText = 'Disconnected';
+                document.getElementById('setup').style.display = 'block';
+                document.getElementById('chat').style.display = 'none';
+                addSystemMessage("Disconnected from chat room");
+            };
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            const message = input.value.trim();
+            if (message && ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({
+                    type: "message",
+                    content: message
+                }));
+                input.value = "";
+            } else if (!ws || ws.readyState !== WebSocket.OPEN) {
+                addErrorMessage("Not connected to server");
+            }
+        }
+
+        function sendTyping() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ type: "typing" }));
+            }
+        }
+
+        function stopTyping() {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({ type: "stop_typing" }));
+            }
+        }
+
+        function disconnect() {
+            if (ws) {
+                ws.close();
+            }
+        }
+
+        // Helper functions to display messages
+        function addChatMessage(msg) {
+            const messages = document.getElementById("messages");
+            const li = document.createElement("li");
+            li.className = "message-item";
+            li.innerHTML = `<strong>${msg.user_info?.display_name || msg.user}</strong>: ${msg.content} <span class="metadata">${formatTimestamp(msg.created_at)}</span>`;
+            messages.appendChild(li);
+            scrollToBottom();
+        }
+
+        function addSystemMessage(text) {
+            const messages = document.getElementById("messages");
+            const li = document.createElement("li");
+            li.className = "message-item system-message";
+            li.innerText = text;
+            messages.appendChild(li);
+            scrollToBottom();
+        }
+
+        function addErrorMessage(text) {
+            const messages = document.getElementById("messages");
+            const li = document.createElement("li");
+            li.className = "message-item error";
+            li.innerText = "Error: " + text;
+            messages.appendChild(li);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            const messages = document.getElementById("messages");
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function formatTimestamp(timestamp) {
+            try {
+                const date = new Date(timestamp);
+                return date.toLocaleTimeString();
+            } catch (e) {
+                return timestamp;
+            }
+        }
+
+        // Handle Enter key for sending messages
+        document.getElementById("messageInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
