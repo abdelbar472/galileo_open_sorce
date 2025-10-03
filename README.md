@@ -129,7 +129,7 @@ Galileo demonstrates my capabilities in:
 Have questions or want to discuss this project further? Feel free to reach out:
 
 - GitHub: [@abdelbar472](https://github.com/abdelbar472)
-- Email: [your-email@example.com]
+- Email: [k.abdelbar128@gmail.com]
 
 ---
 
